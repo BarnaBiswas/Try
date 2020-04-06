@@ -1,6 +1,7 @@
 package com.example.welink.Fragments;
 
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -24,6 +25,7 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -38,9 +40,7 @@ import java.util.ArrayList;
  */
 public class AllUserFragment extends Fragment {
     private RecyclerView recyclerview;
-    int totalUser = 0;
     private DatabaseReference userRef;
-    private TextView AllUser;
     private ArrayList<User> users;
     private FirebaseRecyclerOptions<User> options;
     private FirebaseRecyclerAdapter<User, UserViewHolder> adapter;
@@ -69,8 +69,7 @@ public class AllUserFragment extends Fragment {
 
         recyclerview = (RecyclerView) rootview.findViewById(R.id.recyclerview);
         recyclerview.setHasFixedSize(true);
-        recyclerview.setLayoutManager(new LinearLayoutManager(AllUserFragment.this.getContext() ));
-        AllUser = (TextView) rootview.findViewById(R.id.AllUser);
+        recyclerview.setLayoutManager(new LinearLayoutManager(AllUserFragment.this.getContext()));
 
         users = new ArrayList<User>();
 
@@ -96,23 +95,6 @@ public class AllUserFragment extends Fragment {
 
         recyclerview.setAdapter(adapter);
         adapter.startListening();
-
-        userRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(dataSnapshot.exists()){
-                    totalUser = (int) dataSnapshot.getChildrenCount();
-                    AllUser.setText("Total User : " + Integer.toString(totalUser));
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
-
         return rootview;
     }
 
