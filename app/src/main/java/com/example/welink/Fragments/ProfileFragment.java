@@ -2,7 +2,6 @@ package com.example.welink.Fragments;
 
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -15,8 +14,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.welink.HomeActivity;
-import com.example.welink.LoginActivity;
+import com.example.welink.Controller.LoginActivity;
 import com.example.welink.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -64,7 +62,6 @@ public class ProfileFragment extends Fragment {
         phoneEdit = rootview.findViewById(R.id.phoneUpdate);
         ageEdit = rootview.findViewById(R.id.ageUpdate);
         mAuth = FirebaseAuth.getInstance();
-        print();
         //first setting up the current setting to the profile
         setUserInfo();
 
@@ -126,11 +123,6 @@ public class ProfileFragment extends Fragment {
 
 
         return rootview;
-    }
-
-    private void print() {
-        String uid = mAuth.getCurrentUser().getUid();
-        Toast.makeText(ProfileFragment.this.getContext(), uid, Toast.LENGTH_SHORT).show();
     }
 
 

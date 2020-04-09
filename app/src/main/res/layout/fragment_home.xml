@@ -1,15 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.HomeFragment">
-
-    <!-- TODO: Update blank fragment layout -->
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Fragments.HomeFragment"
+    android:orientation="vertical">
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="This is the home fragment"
-        android:textSize="36dp"/>
+        android:layout_height="45dp"
+        android:text="Job Posts"
+        android:gravity="center"
+        android:layout_weight=".1"
+        android:textSize="20dp"
+        android:layout_marginBottom="3sp"
+        android:textColor="#2E314B"
+        android:background="#93C97F"
+        android:inputType="textMultiLine"
+        android:layout_gravity="top"/>
 
-</FrameLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/postrecycle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="20"/>
+
+</LinearLayout>
+
+
